@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<article aria-labelledby="post-title">
+<small>{{ page.date | date: "%-d %B %Y" }}</small>
+<h1 id="post-title">{{ page.title }}</h1>
+
+<p class="view">by {{ page.author | default: site.author }}</p>
+
+{{content}}
+</article>
+
+{% if page.tags %}
+  <small>tags: <em>{{ page.tags | join: "</em> — <em>" }}</em></small>
+{% endif %}
+
+{% if page.tags and page.tags.size > 0 %}
+<br/>
+<br/>
+<h3>Related posts</h3>
+<ul>
+  {% assign shown = 0 %}
+  {% for p in site.posts %}
+    {% if p.url != page.url %}
+      {% for tag in p.tags %}
+        {% if page.tags contains tag and shown < 3 %}
+          {% assign shown = shown | plus: 1 %}
+          <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
