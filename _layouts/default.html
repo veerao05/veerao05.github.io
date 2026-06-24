@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+    {% seo %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
+    <style>
+      mark {
+        background-color: #1a1a2e;
+        color: #7b8cde;
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 0.75em;
+        margin-left: 4px;
+      }
+      .featured-posts {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+      }
+      .featured-posts h2 { margin-bottom: 8px; }
+      .featured-posts ul { list-style: disc; padding-left: 20px; }
+      .featured-posts li { margin-bottom: 12px; }
+      .post-date { color: #888; font-size: 0.85em; margin-top: 2px; }
+      .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 0.85em;
+        color: #888;
+      }
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 36px;
+        height: 20px;
+      }
+      .toggle-switch input { opacity: 0; width: 0; height: 0; }
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #ccc;
+        border-radius: 20px;
+        transition: .3s;
+      }
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 14px; width: 14px;
+        left: 3px; bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: .3s;
+      }
+      input:checked + .toggle-slider { background-color: #267CB9; }
+      input:checked + .toggle-slider:before { transform: translateX(16px); }
+      body.dark-theme {
+        background-color: #1a1a2e !important;
+        color: #cdd6f4 !important;
+      }
+      body.dark-theme h1, body.dark-theme h2, body.dark-theme h3,
+      body.dark-theme h4, body.dark-theme h5, body.dark-theme h6 {
+        color: #cdd6f4 !important;
+      }
+      body.dark-theme header { background-color: #1a1a2e !important; }
+      body.dark-theme a { color: #89b4fa !important; }
+      body.dark-theme .featured-posts {
+        background: rgba(255,255,255,0.03) !important;
+        border-color: rgba(255,255,255,0.1) !important;
+      }
+      .search-container { margin-top: 16px; }
+      .search-input {
+        width: 100%;
+        padding: 6px 10px;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        font-size: 0.85em;
+        background: transparent;
+        color: inherit;
+      }
+      body.dark-theme .search-input {
+        border-color: rgba(255,255,255,0.2);
+        color: #cdd6f4;
+      }
+    </style>
+    <script>
+      // Persist dark mode
+      (function() {
+        if (localStorage.getItem('darkMode') === 'true') {
+          document.documentElement.classList.add('dark-pre');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{ '/' | relative_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
+        {% if site.logo %}
+          <img src="{{ site.logo | relative_url }}" alt="Logo" style="max-width:180px; border-radius:8px; margin: 12px 0;">
+        {% endif %}
+
+        <p>{{ site.description }}</p>
+
+        <hr/>
+
+        <nav aria-label="Primary">
+          <a href="{{ '/' | relative_url }}">Home</a> •
+          <a href="{{ '/about' | relative_url }}">About</a>
+          {% if site.github_username %}
+          • <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
+          {% endif %}
+          {% if site.linkedin_username %}
+          • <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" target="_blank">LinkedIn</a>
+          {% endif %}
+          {% if site.medium_username %}
+          • <a href="https://medium.com/@{{ site.medium_username }}" target="_blank">Medium</a>
+          {% endif %}
+        </nav>
+
+        <div class="search-container">
+          <input type="search" class="search-input" id="searchInput" placeholder="Search posts…" aria-label="Search posts">
+        </div>
+
+        <div class="dark-mode-toggle">
+          <span>Dark Mode</span>
+          <label class="toggle-switch" aria-label="Toggle dark mode">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </header>
+
+      <section>
+        {{ content }}
+      </section>
+
+      <footer>
+        <p>Hosted on <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    <script>
+      // Dark mode toggle
+      const toggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      if (localStorage.getItem('darkMode') === 'true') {
+        body.classList.add('dark-theme');
+        toggle.checked = true;
+      }
+      toggle.addEventListener('change', function() {
+        body.classList.toggle('dark-theme', this.checked);
+        localStorage.setItem('darkMode', this.checked);
+      });
+
+      // Search
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('section ul li, section li').forEach(li => {
+          li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    </script>
+  </body>
+</html>
