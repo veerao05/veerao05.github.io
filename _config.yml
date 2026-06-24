@@ -1,0 +1,23 @@
+title: "Veena's Blog"
+description: "Senior Software Engineer | Java | Python | Spring Boot | DevOps | Cloud"
+url: "https://veerao05.github.io"
+baseurl: ""
+
+author:
+  name: Veena Rao
+  bio: "Senior Software Engineer | Java | Python | Spring Boot | DevOps | MLOps | Cloud"
+  location: "The Hague, Netherlands"
+  github: veerao05
+  linkedin: veena-rao-57410a69
+  medium: "@veenaraofr"
+
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+permalink: /blog/:title/
+
+markdown: kramdown
+highlighter: rouge
