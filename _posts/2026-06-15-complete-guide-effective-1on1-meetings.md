@@ -4,6 +4,7 @@ title: "Complete Guide to Effective 1:1 Meetings"
 date: 2026-06-15
 categories: [Engineering, Leadership, Productivity]
 tags: [meetings, leadership, engineering, productivity]
+featured: true
 ---
 
 What one-on-one meetings really are, why most people get them wrong, and how to make every level count — from junior engineer to senior.
