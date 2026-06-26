@@ -7,7 +7,7 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
     {% seo %}
-    <link rel="stylesheet" href="{{ '/asses/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -72,7 +72,7 @@
         {% if site.logo %}<img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="site-logo">{% endif %}
         <hr>
         <p class="site-description">{{ site.description }}</p>
-                <div class="site-nav"><a href="{{ '/' | relative_url }}">Home</a>a><span class="sep"> · </span>span><a href="{{ '/about' | relative_url }}">About</a>a>{% if site.github_username %}<span class="sep"> · </span>span><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>a>{% endif %}{% if site.linkedin_username %}<span class="sep"> · </span>span><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>a>{% endif %}{% if site.medium_username %}<span class="sep"> · </span>span><a href="https://medium.com/{{ site.medium_username }}" target="_blank" rel="noopener">Medium</a>a>{% endif %}</div>
+        <div class="site-nav"><a href="{{ '/' | relative_url }}">Home</a><span class="sep"> ÃÂ· </span><a href="{{ '/about' | relative_url }}">About</a>{% if site.github_username %}<span class="sep"> ÃÂ· </span><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>{% endif %}{% if site.linkedin_username %}<span class="sep"> ÃÂ· </span><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}{% if site.medium_username %}<span class="sep"> ÃÂ· </span><a href="https://medium.com/{{ site.medium_username }}" target="_blank" rel="noopener">Medium</a>{% endif %}</div>
         <div class="search-box"><input type="text" id="search-input" placeholder="Search posts..." autocomplete="off"><ul id="search-results"></ul></div>
         <div class="dark-toggle-row"><span>Dark Mode</span><label class="theme-toggle"><input type="checkbox" class="toggle-checkbox" id="theme-toggle" checked><span class="toggle-label"></span></label></div>
       </header>
